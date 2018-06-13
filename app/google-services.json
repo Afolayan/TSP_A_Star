@@ -1,0 +1,102 @@
+{
+  "project_info": {
+    "project_number": "631981615535",
+    "firebase_url": "https://findmychurch-8c5a3.firebaseio.com",
+    "project_id": "findmychurch-8c5a3",
+    "storage_bucket": "findmychurch-8c5a3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:631981615535:android:f18991978101d905",
+        "android_client_info": {
+          "package_name": "com.afolayan.tsp_a_star"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "631981615535-q2oe82o5d5v9p4clkdtqtd7mcirb9a2e.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "631981615535-q2oe82o5d5v9p4clkdtqtd7mcirb9a2e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA4CtmKPBIDhy5tsamfeM-6nb8VB7dP5pI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:631981615535:android:826f684c015c8b7b",
+        "android_client_info": {
+          "package_name": "ng.com.jcedar.findmychurch"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "631981615535-b4720g6l3mjdiiq1uougsptctnh2oh1u.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ng.com.jcedar.findmychurch",
+            "certificate_hash": "93b97ddee9a542c018ea54ae11e46c0f37059bfa"
+          }
+        },
+        {
+          "client_id": "631981615535-172ja3p9k6gt7loq9np59udgmh94cu4b.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ng.com.jcedar.findmychurch",
+            "certificate_hash": "c86db96560c40f76b3e81e141651118b909a553c"
+          }
+        },
+        {
+          "client_id": "631981615535-q2oe82o5d5v9p4clkdtqtd7mcirb9a2e.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "631981615535-q2oe82o5d5v9p4clkdtqtd7mcirb9a2e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA4CtmKPBIDhy5tsamfeM-6nb8VB7dP5pI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "631981615535-q2oe82o5d5v9p4clkdtqtd7mcirb9a2e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

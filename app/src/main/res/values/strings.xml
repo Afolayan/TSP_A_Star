@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">TSP_A_Star</string>
+    <string name="title_activity_main">Map</string>
+    <string name="google_maps_key_main">AIzaSyCkIxsgkxwdZFEPZYx0SX71Fp1MO4Agbi4</string>
 </resources>

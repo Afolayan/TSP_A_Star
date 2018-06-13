@@ -4,6 +4,7 @@
 /.idea/checkstyle-idea.xml
 /gradle
 /.idea/gradle.xml
+/.idea/vcs.xml
 /.idea/misc.xml
 /.idea/libraries
 /.idea/modules.xml
