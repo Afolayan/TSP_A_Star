@@ -22,6 +22,7 @@ import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static com.google.android.gms.location.LocationServices.getFusedLocationProviderClient;
@@ -84,9 +85,12 @@ public class MainActivity extends AppCompatActivity implements
                 int nearestTownId = AStarHelper.nearestLocation(toVisit, distances, currentTownId);
                 visitSequence.append(",").append(nearestTownId + 1); //add to sequence. plus i to get actual ID
                 totalDistance += distances[currentTownId][nearestTownId]; // add the distance visited
-                Log.e(TAG, "doAStarSearch visitSequence: "+visitSequence);
 
                 AStarHelper.removeMapLocation(toVisit, nearestTownId);
+                if(toVisit.size() == 1){
+                    /*just at the last item, add the distance to the starting point*/
+                    totalDistance += distances[nearestTownId][location.getId()];
+                }
                 currentTownId = nearestTownId; //we are now in that location
             }
             //if first time OR if current result is better
@@ -97,7 +101,7 @@ public class MainActivity extends AppCompatActivity implements
 
         }
         printOutput();
-        System.out.println("\n\nBest sequence with total distance of " + bestDistance + ":\n\n" + bestSequence);
+        Log.e(TAG, "\n\nBest sequence with total distance of " + bestDistance + ":\n\n" + bestSequence);
 
     }
 
@@ -117,12 +121,14 @@ public class MainActivity extends AppCompatActivity implements
 
     private void printOutput() {
         String[] sequenceSplit = bestSequence.split(",");
-        int[] path = new int[sequenceSplit.length];
-        for (int i = 0; i < sequenceSplit.length; i++) {
+        int length = sequenceSplit.length + 1;
+        int[] path = new int[length];
+        for (int i = 0; i < length - 1; i++) {
             String id = sequenceSplit[i];
             int index = Integer.parseInt(id) - 1;
             path[i] = index;
         }
+        path[length-1] = Integer.parseInt(sequenceSplit[0])-1;
         printPath(path);
 
     }
@@ -130,19 +136,28 @@ public class MainActivity extends AppCompatActivity implements
     private void printPath(int[] path) {
         List<LatLng> tspPath = new ArrayList<>();
         mMap.clear();
-        for (int aPath : path) {
+        Log.e(TAG, "printPath: path-> "+ Arrays.toString(path));
+        for (int i = 0; i < path.length; i++) {
+            int aPath = path[i];
             MapLocation location = mapLocations.get(aPath);
 
             LatLng locationLatLng = new LatLng(location.getLatitude(), location.getLongitude());
-            MarkerOptions markerOptions = new MarkerOptions()
-                    .position(locationLatLng)
-                    .title(location.getName());
-            mMap.addMarker(markerOptions);
-            tspPath.add(locationLatLng);
-            if(aPath == 0){
-                LatLng firstArea = tspPath.get(0);
-                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(firstArea, 10f));
+            MarkerOptions markerOptions;
+            if (i == 0) {
+                markerOptions = new MarkerOptions()
+                        .position(locationLatLng)
+                        .title(location.getName())
+                        .snippet("Starting point");
+                mMap.addMarker(markerOptions).showInfoWindow();
+                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(locationLatLng, 10f));
+            } else {
+                markerOptions = new MarkerOptions()
+                        .position(locationLatLng)
+                        .title(location.getName()).snippet("Point: " + i);
+                mMap.addMarker(markerOptions);
             }
+
+            tspPath.add(locationLatLng);
         }
         //draw map points
         PolylineOptions pathOptions = new PolylineOptions().addAll(tspPath);
